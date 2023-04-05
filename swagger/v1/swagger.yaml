@@ -1,0 +1,302 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/auth/login":
+    post:
+      summary: login authentication
+      parameters: []
+      responses:
+        '201':
+          description: user created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+  "/students":
+    get:
+      summary: list students
+      parameters:
+      - name: token
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create student
+      parameters:
+      - name: token
+        in: header
+        schema:
+          type: string
+      responses:
+        '201':
+          description: student created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                age:
+                  type: integer
+                roll_no:
+                  type: integer
+              required:
+              - name
+              - age
+              - roll_no
+  "/students/new":
+    parameters:
+    - name: token
+      in: header
+      schema:
+        type: string
+    get:
+      summary: new student
+      responses:
+        '200':
+          description: successful
+  "/students/{id}/edit":
+    parameters:
+    - name: token
+      in: header
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: edit student
+      responses:
+        '200':
+          description: successful
+  "/students/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show student
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update student
+      parameters:
+      - name: token
+        in: header
+        schema:
+          type: string
+      responses:
+        '201':
+          description: student created
+        '422':
+          description: invalid request
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                age:
+                  type: integer
+                roll_no:
+                  type: integer
+              required:
+              - name
+              - age
+              - roll_no
+    put:
+      summary: update student
+      parameters:
+      - name: token
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete student
+      responses:
+        '200':
+          description: successful
+  "/users":
+    get:
+      summary: list users
+      parameters:
+      - name: token
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create user
+      parameters:
+      - name: token
+        in: header
+        schema:
+          type: string
+      responses:
+        '201':
+          description: user created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - username
+              - email
+              - password
+  "/users/new":
+    get:
+      summary: new user
+      parameters:
+      - name: token
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+  "/users/{_username}/edit":
+    parameters:
+    - name: _username
+      in: path
+      description: _username
+      required: true
+      schema:
+        type: string
+    get:
+      summary: edit user
+      parameters:
+      - name: token
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+  "/users/{_username}":
+    parameters:
+    - name: _username
+      in: path
+      description: _username
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show user
+      parameters:
+      - name: token
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update user
+      parameters:
+      - name: token
+        in: header
+        schema:
+          type: string
+      responses:
+        '201':
+          description: user created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - username
+              - email
+              - password
+    put:
+      summary: update user
+      parameters:
+      - name: token
+        in: header
+        schema:
+          type: string
+      responses:
+        '201':
+          description: user created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - username
+              - email
+              - password
+    delete:
+      summary: delete user
+      parameters:
+      - name: token
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000

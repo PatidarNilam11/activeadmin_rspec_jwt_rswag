@@ -85,6 +85,11 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails', '~> 5.0.0'
   gem 'shoulda-callback-matchers', '~> 1.1', '>= 1.1.4'
-  gem 'shoulda-matchers', require: false
+  gem 'shoulda-matchers', require: true
   gem 'simplecov', '~> 0.12.0'
-end
+ end
+
+gem 'rswag'
+gem 'jwt'
+gem 'bcrypt'
+

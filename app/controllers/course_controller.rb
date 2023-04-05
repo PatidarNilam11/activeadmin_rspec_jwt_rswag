@@ -17,20 +17,20 @@ class CourseController < ApplicationController
 
 	def update
     @course = Course.find(params[:id])
-		if @course.update(course_params)
+		@course.update(course_params)
 			render json: @course
-		else
-			render json: @course.errors.full_messages 
-		end
+		# else
+		# 	render json: @course.errors.full_messages 
+		# end
   end
 
 	def destroy
     @course = Course.find(params[:id])
-		if @course.destroy
+		@course.destroy
 			render json: @course
-		else
-			render json: @course.errors.full_messages 
-		end
+		# else
+		# 	render json: @course.errors.full_messages 
+		# end
   end
 
 	private

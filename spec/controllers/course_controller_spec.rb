@@ -11,15 +11,15 @@ RSpec.describe CourseController, type: :controller do
         expect(response.status).to eq 200
       end
 
-    # it 'display with id' do
-    #   get 'index' , params: { id: @course.id} 
-    #   expect(response.status).to eq 200
-    # end
+    it 'display with id' do
+      get 'index' , params: { id: @course.id} 
+      expect(response.status).to eq 200
+    end
     
-    # it '#index  it is nil id' do
-    #   get 'index' , params: { id: nil} 
-    #   expect(response.status).to eq 200
-    # end
+    it '#index  it is nil id' do
+      get 'index' , params: { id: nil} 
+      expect(response.status).to eq 200
+    end
   end 
 
   describe "GET  show profile" do
